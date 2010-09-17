@@ -119,14 +119,19 @@ splitStringGetEnv(const std::string& var,
 
 int main (int argc, char** argv)
 {
-    if (*(argv + 1) == NULL) return EXIT_FAILURE;
+    if (argv[1] == NULL) return EXIT_FAILURE;
 
     bool toShowAllMatches = false;
-    for (int i = 1; *(argv + i) && (**(argv + i) == '-'); ++i)
+    int i = 1;
+    for (; argv[i] && *argv[i] == '-' && strcmp(argv[i], "-"); ++i)
     {
-        if (!strcmp(*(argv + i), "--")) break;
+        if (!strcmp(argv[i], "--"))
+        {
+            ++i;
+            break;
+        }
 
-        if (!strcmp(*(argv + i), "-a"))
+        if (!strcmp(argv[i], "-a"))
         {
             toShowAllMatches = true;
             continue;
@@ -146,7 +151,7 @@ int main (int argc, char** argv)
         splitStringGetEnv("PATHEXT", PathSep, std::ptr_fun(::tolower));
 #endif
 
-    for (int i = 1; i < argc; ++i)
+    for (; i < argc; ++i)
     {
         std::string filename(*(argv + i));
 
