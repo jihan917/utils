@@ -4,7 +4,7 @@
  * (C) Copyright 2010, Ji Han (jihan917<at>yahoo<dot>com).
  * free to distribute under the GPL license.
  *
- * SYNOPSOS: tsort [file]
+ * SYNOPSIS: tsort [file]
  *
  * see http://www.opengroup.org/onlinepubs/009695399/utilities/tsort.html
  * for the specification.
